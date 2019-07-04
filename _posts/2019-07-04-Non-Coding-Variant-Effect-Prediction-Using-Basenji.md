@@ -80,9 +80,3 @@ We devised a method to quantify how distal sequence influences a Basenji model's
 The model's ultimate goal is to predict read coverage in 128-bp bins across long chromosome sequences which would be then used to predict the regulatory activity function.</p>
 <p>
 <h3><b>Usage of these predicted coverage values:</b></h3></p>
-<p>
-Coverage tells the number of unique reads that include a given nucleotide in the reconstructed sequence.
-Given a SNP–gene pair, we define its SNP expression difference (SED) score as the difference between the predicted CAGE coverage at that gene's TSS (or summed across multiple alternative TSS) for the two alleles.</p><p>
-  <b>SED= | Allele1 - Allele2|</b></p>
- <p>{% include image.html align="center" url="/assets/img/saliency maps.jpg" %}</p>
- <p>By considering this |SED - LD| score, all the variants are ranked. And this gives the information about the causal variants i.e, based on the rank of the variants. And then, these variants can be linked to disease loci and we can thus know the genetic basis of the disease.</p>
