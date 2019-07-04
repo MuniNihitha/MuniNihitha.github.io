@@ -5,7 +5,7 @@ date: 2019-07-02
 comments: True
 mathjax: True
 ---
-<h2> Introduction </h2>
+<h2> <b> Introduction </b> </h2>
 Human DNA is about 99.5% identical from person to person. However, there are small differences that make each person unique. These differences are called variants. And these variants are linked to certain health conditions.
 <p>
 Variants are of two types, Coding and Non-coding. 
