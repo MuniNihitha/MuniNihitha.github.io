@@ -89,10 +89,9 @@ repressive segments that may serve to tune the gene’s expression rate. This fe
 The model's ultimate goal is to predict read coverage in 128-bp bins across long chromosome sequences which would be then used to predict the regulatory activity function.</p>
 <p>
 <h3><b>Usage of these predicted coverage values:</b></h3></p>
-<p><h5><b>Disease-associated loci</b></h5>
+<p><h4><b>Disease-associated loci</b></h4>
 Coverage tells the number of unique reads that include a given nucleotide in the reconstructed sequence.
-Given a SNP–gene pair, we define its SNP expression difference (SED) score as the difference between the predicted CAGE coverage at that gene's TSS (or summed across multiple alternative TSS) for the two alleles.Basenji’s utility for analyzing human genomic variation goes beyond intermediate molecular phenotypes like eQTLs to downstream ones like physical traits and disease. With Basenji, a single
-experiment is sufficient to predict a genomic variant’s influence on gene expression in that cell type. 
+Given a SNP–gene pair, we define its SNP expression difference (SED) score as the difference between the predicted CAGE coverage at that gene's TSS (or summed across multiple alternative TSS) for the two alleles.</p><p>Basenji’s utility for analyzing human genomic variation goes beyond intermediate molecular phenotypes like eQTLs to downstream ones like physical traits and disease. With Basenji, a single experiment is sufficient to predict a genomic variant’s influence on gene expression in that cell type. 
 </p><p>
   <b>SED= | Allele1 - Allele2|</b></p>
  <p>{% include image.html align="center" url="/assets/img/saliency maps.jpg" %}</p>
