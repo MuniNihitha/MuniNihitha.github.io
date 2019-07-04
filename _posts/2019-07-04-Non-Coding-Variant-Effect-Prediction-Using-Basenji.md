@@ -49,6 +49,19 @@ Models for predicting phenotypic outcomes from genotypes have important applicat
 <h3><b>Input:</b></h3>
 The model accepts much larger (2^17=) 131-kb regions as input i.e, the entire DNA sequence. DNA sequences come in to the model one hot encoded to four rows representing A, C, G, and T.
 </p>
-
+<p>
+<h3><b>Architecture:</b></h3>
+</p><p>
+Basenji is basically a deep convolutional neural network with three layers i.e, Convolution, Dilated convolution and Prediction layers. Lets discuss these layers in detail.</p><p>
+<h4><b>a.Convolution layers:</b></h4></p>
+<p>
+It performs multiple layers of convolution and pooling to transform the DNA to a sequence of vectors representing 128-bp regions. We used a Basenji architecture with four standard convolution layers, pooling in between layers by two, four, four, and four to a multiplicative total of 128.
+</p><p>
+<h4><b>b.Dilated Convolution layers:</b></h4>
+</p>
+To share information across long distances, we then apply several layers of densely connected dilated convolutions. After these layers, each 128-bp region aligns to a vector that considers the relevant regulatory elements across a large span of sequence. Dilated convolutions extend the reach of our model to view distal regulatory elements at distances, achieving a 32-kb receptive field width. Lets discuss below how to predict the effect of distal regulatory elements in detail.
+<p>
+  {% include image.html align="center" url="/assets/img/dilatedconv.jpg" %}
+ </p>
 
  
