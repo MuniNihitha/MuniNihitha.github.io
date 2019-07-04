@@ -45,6 +45,10 @@ Models for predicting phenotypic outcomes from genotypes have important applicat
   <p>
    {% include image.html align="center" url="/assets/img/basenjifull.jpg" %}
   </p>
+  <p>
+<h3><b>Input:</b></h3>
+The model accepts much larger (2^17=) 131-kb regions as input i.e, the entire DNA sequence. DNA sequences come in to the model one hot encoded to four rows representing A, C, G, and T.
+</p>
 
 
  
