@@ -63,7 +63,7 @@ It performs multiple layers of convolution and pooling to transform the DNA to a
 </p><p>
 <h4><b>b.Dilated Convolution layers:</b></h4>
 </p><p>
- The 128 bp regions which we obtain after the convolution layers would be fed as input to the dilated convolution layers.
+ Theese 128 bp regions which we obtain after the convolution layers would be fed as input to the dilated convolution layers.
 To share information across long distances, we apply several layers of densely connected dilated convolutions. After these layers, each 128-bp region aligns to a vector that considers the relevant regulatory elements across a large span of sequence. 
 </p><p>
 The main aim of these dilated convolutions in our model is to view distal regulatory elements which are at distances, achieving a 32-kb receptive field width i.e, it extracts and combines the features which are even farther from the TSS(Transcription Start Site).</p><p>
@@ -71,16 +71,17 @@ The main aim of these dilated convolutions in our model is to view distal regula
 <p>
   {% include image.html align="center" url="/assets/img/dilatedconv.jpg" %}
  </p>
- <p> From the above image, we get to see how the dilated convolutions,unlike standard convolutions,look at the patterns which are at distances and combines those distant features to predict the distal regulatory elements and their effects on gene-expression. Lets discuss how the effects of distal regulatory elements are predicted more in detail. 
+ <p> From the above image, we can see how the dilated convolutions,unlike standard convolutions,look at the patterns which are at distances and combines those distant features to predict the distal regulatory elements and their effects on gene-expression. Lets discuss how the effects of distal regulatory elements are predicted more in detail. 
 <p>
 <h4><b>Predicting the effects of distal regulatory elements:</b></h4></p>
-<p>
-We devised a method to quantify how distal sequence influences a Basenji model's predictions and applied it to produce saliency maps for gene regions. </p><p>
+<p>Distant enhancer sequences play a significant role in activating gene expression. We devised a method to quantify how distal sequence influences a Basenji model's predictions and applied it to produce saliency maps for gene regions. The saliency scores are calculated for all the 128 bp regions which we get after the convolution layers and before the dilated convolutions share the information.And these scores can be calculated as shown below: </p><p>
   <b>Saliency score= ∑ 128-bp bin representations * Gradient of the model predictions</b></p>
   <p>{% include image.html align="center" url="/assets/img/peaks.jpg" %} </p>
-  <p>
-  Peaks in this saliency score detect distal regulatory elements, and its sign indicates enhancing (+) versus silencing (−) influence.
- </p>
+  <p>In the above image, we can see the peaks in the saliency maps and peaks in this saliency score detect distal regulatory elements, and its sign indicates enhancing (+) versus silencing (−) influence. The promoter region has extreme saliency scores, including repressive segments; i.e. mutating the regulatory sequence recognized by the model in these regions would increase the predicted
+activity.</p><p>
+  Intriguingly, promoters have more extreme scores at both the high and low ends, suggesting that they frequently contain
+repressive segments that may serve to tune the gene’s expression rate. This feature is also present for enhancers, but at a far lesser magnitude on the repressive end.
+</p>
  <p>
 <h4><b> c.Prediction Layer:</b></h4></p>
 <p>Finally, we apply a final width-one convolutional layer to parameterize a multitask Poisson regression on normalized counts of aligned reads to that region for every data set provided and it predicts the 4229 coverage datasets.</p><p>
@@ -88,10 +89,13 @@ We devised a method to quantify how distal sequence influences a Basenji model's
 The model's ultimate goal is to predict read coverage in 128-bp bins across long chromosome sequences which would be then used to predict the regulatory activity function.</p>
 <p>
 <h3><b>Usage of these predicted coverage values:</b></h3></p>
-<p>
+<p><h5><b>Disease-associated loci</b></h5>
 Coverage tells the number of unique reads that include a given nucleotide in the reconstructed sequence.
-Given a SNP–gene pair, we define its SNP expression difference (SED) score as the difference between the predicted CAGE coverage at that gene's TSS (or summed across multiple alternative TSS) for the two alleles.</p><p>
-  <b><center>SED= | Allele1 - Allele2|</center></b></p>
+Given a SNP–gene pair, we define its SNP expression difference (SED) score as the difference between the predicted CAGE coverage at that gene's TSS (or summed across multiple alternative TSS) for the two alleles.Basenji’s utility for analyzing human genomic variation goes beyond intermediate molecular phenotypes like eQTLs to downstream ones like physical traits and disease. With Basenji, a single
+experiment is sufficient to predict a genomic variant’s influence on gene expression in that cell type. 
+</p><p>
+  <b>SED= | Allele1 - Allele2|</b></p>
  <p>{% include image.html align="center" url="/assets/img/saliency maps.jpg" %}</p>
- <p>By considering this |SED - LD| score, all the variants are ranked. And this gives the information about the causal variants i.e, based on the rank of the variants. And then, these variants can be linked to disease loci and we can thus know the genetic basis of the disease.</p>
+ <p>Linkage disequilibrium(LD) is the non-random association of allele at a different loci in given population.By considering this |SED - LD| score, all the variants are ranked. And this gives the information about the causal variants i.e, based on the rank of the variants. And then, these variants can be linked to disease loci and we can thus know the genetic basis of the disease.</p>
 
+<h4><b>Summary:</b></h4>
