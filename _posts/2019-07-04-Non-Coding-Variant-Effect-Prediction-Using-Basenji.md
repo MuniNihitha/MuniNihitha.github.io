@@ -29,6 +29,6 @@ In order to understand the genetic basis of disease, we need to understand the i
 Thus, sequence based deep learning models can be used for assessing the impact of such variants which offer a promising approach to find potential drivers of complex phenotypes.
   </p>
   <p>
-In this blog, we will learn about one such sequence based deep learning model, Basenji.</p>
+  In this blog, we will learn about one such sequence based deep learning model,<b> Basenji </b>.</p>
 
  
