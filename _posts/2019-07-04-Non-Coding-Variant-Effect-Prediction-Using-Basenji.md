@@ -34,8 +34,6 @@ Thus, sequence based deep learning models can be used for assessing the impact o
 <h2> <b> Basenji </b></h2>
 </p>
 <p>
-<h3> <b> Overview </b> </h3></p>
-<p>
 Models for predicting phenotypic outcomes from genotypes have important applications to understanding genomic function and improving human health. Basenji is a machine-learning system to predict cell-type–specific epigenetic and transcriptional profiles in large mammalian genomes from DNA sequence alone.
 </p>
 <p>
@@ -44,5 +42,9 @@ Models for predicting phenotypic outcomes from genotypes have important applicat
   <p>
   </p>
   <h3><b>Model Architecture </b></h3>
+  <p>
+   {% include image.html align="center" url="/assets/img/basenji.jpg" %}
+  </p>
+
 
  
