@@ -42,12 +42,14 @@ Models for predicting phenotypic outcomes from genotypes have important applicat
   <p>
   </p>
   <h3><b>Model Architecture </b></h3>
+  <p> What distinguishes Basenji from others is that, using convolutional neural networks, this system identifies promoters and distal regulatory elements and synthesizes their content to make effective gene expression predictions. The distal regulatory elements play an important role in controlling the gene expression. So, this model predicts those regulatory elements and also tell us how these elements are influencing the gene expression.
+  </p>
   <p>
    {% include image.html align="center" url="/assets/img/basenjifull.jpg" %}
   </p>
   <p>
 <h3><b>Input:</b></h3>
-The model accepts much larger (2^17=) 131-kb regions as input i.e, the entire DNA sequence. DNA sequences come in to the model one hot encoded to four rows representing A, C, G, and T.
+The model accepts much larger (2^17) 131-kb regions as input i.e, the entire DNA sequence. DNA sequences come in to the model one hot encoded to four rows representing the four nucleobases, A, C, G, and T.
 </p>
 <p>
 <h3><b>Architecture:</b></h3>
@@ -56,16 +58,22 @@ Basenji is basically a deep convolutional neural network with three layers i.e, 
 <h4><b>a.Convolution layers:</b></h4></p>
 <p>
 It performs multiple layers of convolution and pooling to transform the DNA to a sequence of vectors representing 128-bp regions. We used a Basenji architecture with four standard convolution layers, pooling in between layers by two, four, four, and four to a multiplicative total of 128.
+ 
+ By these convolution layers, it observes the patterns in the DNA sequence and transforms the DNA to a set of vectors where each vector represents a 128 bp region.
 </p><p>
 <h4><b>b.Dilated Convolution layers:</b></h4>
-</p>
-To share information across long distances, we then apply several layers of densely connected dilated convolutions. After these layers, each 128-bp region aligns to a vector that considers the relevant regulatory elements across a large span of sequence. Dilated convolutions extend the reach of our model to view distal regulatory elements at distances, achieving a 32-kb receptive field width. Lets discuss below how to predict the effect of distal regulatory elements in detail.<p>
+</p><p>
+ The 128 bp regions which we obtain after the convolution layers would be fed as input to the dilated convolution layers.
+To share information across long distances, we apply several layers of densely connected dilated convolutions. After these layers, each 128-bp region aligns to a vector that considers the relevant regulatory elements across a large span of sequence. 
+</p><p>
+The main aim of these dilated convolutions in our model is to view distal regulatory elements which are at distances, achieving a 32-kb receptive field width i.e, it extracts and combines the features which are even farther from the TSS(Transcription Start Site).</p><p>
   </p>
 <p>
   {% include image.html align="center" url="/assets/img/dilatedconv.jpg" %}
  </p>
+ <p> From the above image, we get to see how the dilated convolutions,unlike standard convolutions,look at the patterns which are at distances and combines those distant features to predict the distal regulatory elements and their effects on gene-expression. Lets discuss how the effects of distal regulatory elements are predicted more in detail. 
 <p>
-<h4><b> Distal regulatory elements:</b></h4></p>
+<h4><b>Predicting the effects of distal regulatory elements:</b></h4></p>
 <p>
 We devised a method to quantify how distal sequence influences a Basenji model's predictions and applied it to produce saliency maps for gene regions. </p><p>
   <b>Saliency score= ∑ 128-bp bin representations * Gradient of the model predictions</b></p>
