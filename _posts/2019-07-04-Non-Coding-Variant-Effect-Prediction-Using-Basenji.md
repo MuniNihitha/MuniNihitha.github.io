@@ -43,7 +43,7 @@ Models for predicting phenotypic outcomes from genotypes have important applicat
   </p>
   <h3><b>Model Architecture </b></h3>
   <p>
-   {% include image.html align="center" url="/assets/img/basenji.jpg" %}
+   {% include image.html align="center" url="/assets/img/basenjifull.jpg" %}
   </p>
 
 
