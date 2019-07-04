@@ -17,12 +17,12 @@ Variants are of two types, Coding and Non-coding. 
 In order to understand the genetic basis of disease, we need to understand the impact of variants across the genome.</p>
 <p>
  </p>
-<h2><b>Why Non Coding Variants?</b></h2>
+<h3><b>Why Non Coding Variants?</b></h3>
 <p>
   Only about 1 percent of DNA is made up of protein-coding genes; the other 99 percent is non coding. Scientists once thought non coding DNA was "junk," with no known purpose. However, it is becoming clear that at least some of it is integral to the function of cells, particularly the control of gene activity and majority of the diseases are caused by these non-coding variants.
   </p>
   <p>
-<h2><b>Predicting the effects of non-coding variants</b></h2></p>
+<h3><b>Predicting the effects of non-coding variants</b></h3></p>
 <p>
   We need to build models that can predict molecular phenotypes directly from biological sequences to probe the association between the phenotype and the genetic variation.</p>
   <p>
@@ -30,5 +30,19 @@ Thus, sequence based deep learning models can be used for assessing the impact o
   </p>
   <p>
   In this blog, we will learn about one such sequence based deep learning model,<b> Basenji </b>.</p>
+ <p>
+<h2> <b> Basenji </b></h2>
+</p>
+<p>
+<h3> <b> Overview </b> </h3></p>
+<p>
+Models for predicting phenotypic outcomes from genotypes have important applications to understanding genomic function and improving human health. Basenji is a machine-learning system to predict cell-type–specific epigenetic and transcriptional profiles in large mammalian genomes from DNA sequence alone.
+</p>
+<p>
+  Numerous lines of evidence suggest that many non coding variants influence traits by changing gene expression. Thus, gene expression offers a tractable intermediate phenotype for which improved modeling would have great value.
+  </p>
+  <p>
+  </p>
+  <h3><b>Model Architecture </b></h3>
 
  
