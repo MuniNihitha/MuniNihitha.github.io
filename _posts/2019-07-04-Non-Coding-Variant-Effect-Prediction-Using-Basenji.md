@@ -18,5 +18,8 @@ In order to understand the genetic basis of disease, we need to understand the i
 <p>
  </p>
 <h2><b>Why Non Coding Variants?</b></h2>
+<p>
+  Only about 1 percent of DNA is made up of protein-coding genes; the other 99 percent is non coding. Scientists once thought non coding DNA was "junk," with no known purpose. However, it is becoming clear that at least some of it is integral to the function of cells, particularly the control of gene activity and majority of the diseases are caused by these non-coding variants.
+  </p>
 
  
