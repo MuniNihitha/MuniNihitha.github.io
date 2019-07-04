@@ -65,7 +65,7 @@ To share information across long distances, we then apply several layers of dens
   {% include image.html align="center" url="/assets/img/dilatedconv.jpg" %}
  </p>
 <p>
-<h5><b> Distal regulatory elements:</b></h5></p>
+<h4><b> Distal regulatory elements:</b></h4></p>
 <p>
 We devised a method to quantify how distal sequence influences a Basenji model's predictions and applied it to produce saliency maps for gene regions. </p><p>
   <b>Saliency score= ∑ 128-bp bin representations * Gradient of the model predictions</b></p>
