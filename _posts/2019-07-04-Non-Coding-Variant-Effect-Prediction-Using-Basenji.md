@@ -6,13 +6,13 @@ comments: True
 mathjax: True
 ---
 <h2> <b> Introduction </b> </h2>
-Human DNA is about 99.5% identical from person to person. However, there are small differences that make each person unique. These differences are called variants. And these variants are linked to certain health conditions.
+Human DNA is about 99.5% identical from person to person. However, there are small differences that make each person unique. These differences are called variants. Some of these genetic variants are common, such as the variants for blood types (A, B, AB, or O), while many of the variants are rare, seen in only a few people. And a few among these variants would be associated with the disease trait. And by predicting these disease-associated variants, we would get to know what exactly is driving the disease and could get the right treatment for suppressing the disease.
 <p>
 Variants are of two types, Coding and Non-coding. 
 <p>
-<b>Coding DNA:</b> The DNA which encodes the proteins are called coding DNA.
+<b>Coding DNA:</b> The DNA which encodes the proteins are called coding DNA.These Coding DNA is responsible for transcription and translation.
   </p><p>
-<b>Non Coding DNA:</b> DNA which do not encode proteins are called Non-coding DNA.</p>
+<b>Non Coding DNA:</b> DNA which do not encode proteins are called Non-coding DNA.But they perform very important functions which includes regulating transcription and translation, producing different types of RNA, such as microRNA, and protecting the ends of chromosomes.</p>
 <p>
 In order to understand the genetic basis of disease, we need to understand the impact of variants across the genome.</p>
 <p>
