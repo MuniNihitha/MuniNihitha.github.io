@@ -59,9 +59,17 @@ It performs multiple layers of convolution and pooling to transform the DNA to a
 </p><p>
 <h4><b>b.Dilated Convolution layers:</b></h4>
 </p>
-To share information across long distances, we then apply several layers of densely connected dilated convolutions. After these layers, each 128-bp region aligns to a vector that considers the relevant regulatory elements across a large span of sequence. Dilated convolutions extend the reach of our model to view distal regulatory elements at distances, achieving a 32-kb receptive field width. Lets discuss below how to predict the effect of distal regulatory elements in detail.
+To share information across long distances, we then apply several layers of densely connected dilated convolutions. After these layers, each 128-bp region aligns to a vector that considers the relevant regulatory elements across a large span of sequence. Dilated convolutions extend the reach of our model to view distal regulatory elements at distances, achieving a 32-kb receptive field width. Lets discuss below how to predict the effect of distal regulatory elements in detail.<p>
+  </p>
 <p>
   {% include image.html align="center" url="/assets/img/dilatedconv.jpg" %}
  </p>
-
- 
+<p>
+<h3><b> Distal regulatory elements:</b></h3></p>
+<p>
+We devised a method to quantify how distal sequence influences a Basenji model's predictions and applied it to produce saliency maps for gene regions. </p><p>
+  <b>Saliency score= ∑ 128-bp bin representations * Gradient of the model predictions</b></p>
+  <p>{% include image.html align="center" url="/assets/img/saliency maps.jpg" %} </p>
+  <p>
+  Peaks in this saliency score detect distal regulatory elements, and its sign indicates enhancing (+) versus silencing (−) influence.
+ </p>
