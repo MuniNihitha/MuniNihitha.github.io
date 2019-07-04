@@ -69,7 +69,7 @@ To share information across long distances, we then apply several layers of dens
 <p>
 We devised a method to quantify how distal sequence influences a Basenji model's predictions and applied it to produce saliency maps for gene regions. </p><p>
   <b>Saliency score= ∑ 128-bp bin representations * Gradient of the model predictions</b></p>
-  <p>{% include image.html align="center" url="/assets/img/saliency maps.jpg" %} </p>
+  <p>{% include image.html align="center" url="/assets/img/peaks.jpg" %} </p>
   <p>
   Peaks in this saliency score detect distal regulatory elements, and its sign indicates enhancing (+) versus silencing (−) influence.
  </p>
