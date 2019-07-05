@@ -75,7 +75,7 @@ The main aim of these dilated convolutions in our model is to view distal regula
 <p>
 <h4><b>Predicting the effects of distal regulatory elements:</b></h4></p>
 <p>Distant enhancer sequences play a significant role in activating gene expression. We devised a method to quantify how distal sequence influences a Basenji model's predictions and applied it to produce saliency maps for gene regions. The saliency scores are calculated for all the 128 bp regions which we get after the convolution layers and before the dilated convolutions share the information.And these scores can be calculated as shown below: </p><p>
-  <b>Saliency score= ∑ 128-bp bin representations * Gradient of the model predictions</b></p>
+  <b>Saliency score= $\sum_$ 128-bp bin representations * Gradient of the model predictions</b></p>
   <p>{% include image.html align="center" url="/assets/img/peaks.jpg" %} </p>
   <p>In the above image, we can see the peaks in the saliency maps and peaks in this saliency score detect distal regulatory elements, and its sign indicates enhancing (+) versus silencing (−) influence. The promoter region has extreme saliency scores, including repressive segments; i.e. mutating the regulatory sequence recognized by the model in these regions would increase the predicted
 activity.</p><p>
@@ -93,7 +93,7 @@ The model's ultimate goal is to predict read coverage in 128-bp bins across long
 Coverage tells the number of unique reads that include a given nucleotide in the reconstructed sequence.
 Given a SNP–gene pair, we define its SNP expression difference (SED) score as the difference between the predicted CAGE coverage at that gene's TSS (or summed across multiple alternative TSS) for the two alleles.</p><p>Basenji’s utility for analyzing human genomic variation goes beyond intermediate molecular phenotypes like eQTLs to downstream ones like physical traits and disease. With Basenji, a single experiment is sufficient to predict a genomic variant’s influence on gene expression in that cell type. 
 </p><p>
-  <b>SED= | Allele1 - Allele2|</b></p>
+  <b>SED= | Allele1 - Allele2 |</b></p>
  <p>{% include image.html align="center" url="/assets/img/saliency maps.jpg" %}</p>
  <p>Linkage disequilibrium(LD) is the non-random association of allele at a different loci in given population.By considering this |SED - LD| score, all the variants are ranked. And this gives the information about the causal variants i.e, based on the rank of the variants. And then, these variants can be linked to disease loci and we can thus know the genetic basis of the disease.</p>
 
