@@ -75,7 +75,7 @@ The main aim of these dilated convolutions in our model is to view distal regula
 <p>
 <h4><b>Predicting the effects of distal regulatory elements:</b></h4></p>
 <p>Distant enhancer sequences play a significant role in activating gene expression. We devised a method to quantify how distal sequence influences a Basenji model's predictions and applied it to produce saliency maps for gene regions. The saliency scores are calculated for all the 128 bp regions which we get after the convolution layers and before the dilated convolutions share the information.And these scores can be calculated as shown below: </p><p>
-  <b>Saliency score= $$\sum{128-bp bin representations * Gradient of the model predictions}$$</b></p>
+  <b>Saliency score= $$\sum 128-bp bin representations * Gradient of the model predictions $$</b></p>
   <p>{% include image.html align="center" url="/assets/img/peaks.jpg" %} </p>
   <p>In the above image, we can see the peaks in the saliency maps and peaks in this saliency score detect distal regulatory elements, and its sign indicates enhancing (+) versus silencing (−) influence. The promoter region has extreme saliency scores, including repressive segments; i.e. mutating the regulatory sequence recognized by the model in these regions would increase the predicted
 activity.</p><p>
