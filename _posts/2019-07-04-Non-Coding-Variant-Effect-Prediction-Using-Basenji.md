@@ -98,3 +98,4 @@ Given a SNP–gene pair, we define its SNP expression difference (SED) score as 
  <p>Linkage disequilibrium(LD) is the non-random association of allele at a different loci in given population.By considering this |SED - LD| score, all the variants are ranked. And this gives the information about the causal variants i.e, based on the rank of the variants. And then, these variants can be linked to disease loci and we can thus know the genetic basis of the disease.</p>
 
 <h4><b>Summary:</b></h4>
+ So,this model can predict the causality of the variants and the person would be able to find the right treatment for his disease.
