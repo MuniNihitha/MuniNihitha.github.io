@@ -49,7 +49,7 @@ Models for predicting phenotypic outcomes from genotypes have important applicat
   </p>
   <p>
 <h3><b>Input:</b></h3>
-The model accepts much larger (2^17) 131-kb regions as input i.e, the entire DNA sequence. DNA sequences come in to the model one hot encoded to four rows representing the four nucleobases, A, C, G, and T.
+The model accepts much larger ($2^{17}$) 131-kb regions as input i.e, the entire DNA sequence. DNA sequences come in to the model one hot encoded to four rows representing the four nucleobases, A, C, G, and T.
 </p>
 <p>
 <h3><b>Architecture:</b></h3>
