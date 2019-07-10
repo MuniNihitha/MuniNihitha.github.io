@@ -48,6 +48,7 @@ Models for predicting phenotypic outcomes from genotypes have important applicat
    {% include image.html align="center" url="/assets/img/basenjifull.jpg" %}
   </p>
   <p>
+
 <h3><b>Input:</b></h3>
 The model accepts much larger ($2^{17}$) 131-kb regions as input i.e, the entire DNA sequence. DNA sequences come in to the model one hot encoded to four rows representing the four nucleobases, A, C, G, and T.
 </p>
@@ -81,10 +82,104 @@ The main aim of these dilated convolutions in our model is to view distal regula
 activity.</p><p>
   Intriguingly, promoters have more extreme scores at both the high and low ends, suggesting that they frequently contain
 repressive segments that may serve to tune the gene’s expression rate. This feature is also present for enhancers, but at a far lesser magnitude on the repressive end.
-</p>
- <p>
 <h4><b> c.Prediction Layer:</b></h4></p>
 <p>Finally, we apply a final width-one convolutional layer to parameterize a multitask Poisson regression on normalized counts of aligned reads to that region for every data set provided and it predicts the 4229 coverage datasets.</p><p>
+  <p>This is the architecture I have implemented:</p>
+  <p> 
+  ``` python
+  import numpy as np
+import torch
+import torch.nn as nn
+class Basenji(nn.Module):
+	def __init__(self):
+		super(Basenji,self).__init__()
+		self.conv_net=nn.Sequential(
+			nn.Conv2d(4,128,(20,1)),
+ 			nn.BatchNorm2d(128),
+			nn.ReLU(),
+			nn.MaxPool2d((2,1),(2,1)),
+			
+			nn.Conv2d(128,128,(7,1)),
+			nn.BatchNorm2d(128),
+			nn.ReLU(),
+			nn.MaxPool2d((4,1),(4,1)),
+			
+			nn.Conv2d(128,192,(7,1)),
+			nn.BatchNorm2d(192),
+			nn.ReLU(),
+			nn.MaxPool2d((4,1),(4,1)),
+
+			nn.Conv2d(192,256,(7,1)),
+			nn.BatchNorm2d(256),
+			nn.ReLU(),
+			nn.MaxPool2d((4,1),(4,1)),
+
+			nn.Conv2d(256,256,(3,1),dilation=(1,1)),
+			nn.BatchNorm2d(256),
+			nn.ReLU(),)
+			
+		self.dilation1=nn.Sequential(
+			nn.Conv2d(256,32,(3,1),dilation=(2,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation2=nn.Sequential(
+			nn.Conv2d(256,32,(3,1),dilation=(4,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation3=nn.Sequential(	
+			nn.Conv2d(256,32,(3,1),dilation=(8,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation4=nn.Sequential(
+			nn.Conv2d(256,32,(3,1),dilation=(16,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation5=nn.Sequential(	
+			nn.Conv2d(256,32,(3,1),dilation=(32,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation6=nn.Sequential(
+			nn.Conv2d(256,32,(3,1),dilation=(64,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.prediction=nn.Sequential(
+			nn.Conv2d(192,384,(1,1)),
+			nn.BatchNorm2d(384),
+			nn.ReLU(),)
+		
+		self.classifier=nn.Sequential(
+			nn.Linear(1024,3),
+			nn.Dropout(0.1),
+                        )
+	
+	def forward(self,x):
+		out=self.conv_net(x)
+		out1=self.dilation1(out)
+		out2=self.dilation2(out1)
+		out3=self.dilation3(out2)
+		out4=self.dilation4(out3)
+		out5=self.dilation5(out4)
+		out6=self.dilation6(out5)
+		dense=torch.cat([out1,out2,out3,out4,out5,out6],1)
+		output=self.prediction(dense)
+		reshape_out=output.view(output.size(0), 384)
+		final=self.classifier(reshape_out)
+		
+		return final
+
+	def criterion():
+		return nn.MSELoss()
+
+	def get_optimizer():
+		return (torch.optim.Adam,{"lr" : 0.002 , "betas" : (0.97,0.98) , "weight_decay" : 1e-6} )
+```
+  </p>
 <h3><b>Output:</b></h3></p><p>
 The model's ultimate goal is to predict read coverage in 128-bp bins across long chromosome sequences which would be then used to predict the regulatory activity function.</p>
 <p>
