@@ -86,8 +86,9 @@ repressive segments that may serve to tune the gene’s expression rate. This fe
 <p>Finally, we apply a final width-one convolutional layer to parameterize a multitask Poisson regression on normalized counts of aligned reads to that region for every data set provided and it predicts the 4229 coverage datasets.</p><p>
   <p>This is the architecture I have implemented:</p>
   <p> 
-  ``` python
-  import numpy as np
+	
+``` python
+import numpy as np
 import torch
 import torch.nn as nn
 class Basenji(nn.Module):
@@ -179,6 +180,7 @@ class Basenji(nn.Module):
 	def get_optimizer():
 		return (torch.optim.Adam,{"lr" : 0.002 , "betas" : (0.97,0.98) , "weight_decay" : 1e-6} )
 ```
+
   </p>
 <h3><b>Output:</b></h3></p><p>
 The model's ultimate goal is to predict read coverage in 128-bp bins across long chromosome sequences which would be then used to predict the regulatory activity function.</p>
