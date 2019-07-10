@@ -87,7 +87,7 @@ repressive segments that may serve to tune the gene’s expression rate. This fe
   <p>This is the architecture I have implemented:</p>
   <p> 
 	
-```python
+'''python
 
 import numpy as np
 import torch
@@ -180,7 +180,7 @@ class Basenji(nn.Module):
 
 	def get_optimizer():
 		return (torch.optim.Adam,{"lr" : 0.002 , "betas" : (0.97,0.98) , "weight_decay" : 1e-6} )
-```
+'''
 
   </p>
 <h3><b>Output:</b></h3></p><p>
