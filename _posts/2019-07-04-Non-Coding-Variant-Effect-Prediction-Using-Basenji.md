@@ -83,7 +83,7 @@ activity.</p><p>
   Intriguingly, promoters have more extreme scores at both the high and low ends, suggesting that they frequently contain
 repressive segments that may serve to tune the gene’s expression rate. This feature is also present for enhancers, but at a far lesser magnitude on the repressive end.
 <h4><b> c.Prediction Layer:</b></h4></p>
-<p>Finally, we apply a final width-one convolutional layer to parameterize a multitask Poisson regression on normalized counts of aligned reads to that region for every data set provided and it predicts the 4229 coverage datasets.</p><p>
+<p>Finally, we apply a final width-one convolutional layer to parameterize a multitask Poisson regression on normalized counts of aligned reads to that region for every data set provided and it predicts the 4229 coverage datasets.</p>
   <p>This is the architecture I have implemented:</p>
  
 	
@@ -111,7 +111,7 @@ repressive segments that may serve to tune the gene’s expression rate. This fe
 ```
 
  
-<h3><b>Output:</b></h3></p><p>
+<p><h3><b>Output:</b></h3></p><p>
 The model's ultimate goal is to predict read coverage in 128-bp bins across long chromosome sequences which would be then used to predict the regulatory activity function.</p>
 <p>
 <h3><b>Usage of these predicted coverage values:</b></h3></p>
