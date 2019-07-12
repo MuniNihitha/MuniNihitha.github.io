@@ -72,6 +72,77 @@ Finally, we apply a final width-one convolutional layer to parameterize a multit
 This is the architecture I have implemented:
  
  ```python
+import numpy as np
+import torch
+import torch.nn as nn
+class Basenji(nn.Module):
+	def __init__(self):
+		super(Basenji,self).__init__()
+		self.conv_net=nn.Sequential(
+			nn.Conv2d(4,128,(20,1)),
+ 			nn.BatchNorm2d(128),
+			nn.ReLU(),
+			nn.MaxPool2d((2,1),(2,1)),
+			
+			nn.Conv2d(128,128,(7,1)),
+			nn.BatchNorm2d(128),
+			nn.ReLU(),
+			nn.MaxPool2d((4,1),(4,1)),
+			
+			nn.Conv2d(128,192,(7,1)),
+			nn.BatchNorm2d(192),
+			nn.ReLU(),
+			nn.MaxPool2d((4,1),(4,1)),
+
+			nn.Conv2d(192,256,(7,1)),
+			nn.BatchNorm2d(256),
+			nn.ReLU(),
+			nn.MaxPool2d((4,1),(4,1)),
+
+			nn.Conv2d(256,256,(3,1),dilation=(1,1)),
+			nn.BatchNorm2d(256),
+			nn.ReLU(),)
+			
+		self.dilation1=nn.Sequential(
+			nn.Conv2d(256,32,(3,1),dilation=(2,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation2=nn.Sequential(
+			nn.Conv2d(256,32,(3,1),dilation=(4,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation3=nn.Sequential(	
+			nn.Conv2d(256,32,(3,1),dilation=(8,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation4=nn.Sequential(
+			nn.Conv2d(256,32,(3,1),dilation=(16,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation5=nn.Sequential(	
+			nn.Conv2d(256,32,(3,1),dilation=(32,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.dilation6=nn.Sequential(
+			nn.Conv2d(256,32,(3,1),dilation=(64,1)),
+			nn.BatchNorm2d(32),
+			nn.ReLU(),)
+
+		self.prediction=nn.Sequential(
+			nn.Conv2d(192,384,(1,1)),
+			nn.BatchNorm2d(384),
+			nn.ReLU(),)
+		
+		self.classifier=nn.Sequential(
+			nn.Linear(1024,3),
+			nn.Dropout(0.1),
+                        )
+	
 	def forward(self,x):
 		out=self.conv_net(x)
 		out1=self.dilation1(out)
