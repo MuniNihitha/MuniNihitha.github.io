@@ -41,7 +41,7 @@ The full architecture of our neural network includes three convolution layers an
 <p>
  i) First, the DNA sequences are given in the fasta file.</p><p>
 ii) So, we first have to perform the one-hot encoding of these DNA sequences.</p>
- </p>
+
  ```python
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
