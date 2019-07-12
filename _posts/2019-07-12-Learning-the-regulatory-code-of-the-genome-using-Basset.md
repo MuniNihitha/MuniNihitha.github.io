@@ -19,8 +19,9 @@ Thus, Basset offers a powerful computational approach to annotate and interpret 
 
 <h2><b> Overview: </b></h2>
 
-To learn the DNA sequence signals of open versus closed chromatin in these cells, we apply a deep CNN. CNN's perform adaptive feature extraction to map input data to informative representations during training.
-............img
+To learn the DNA sequence signals of open versus closed chromatin in these cells, we apply a deep CNN. CNN's perform adaptive feature extraction to map input data to informative representations during training.<br>
+   {% include image.html align="center" url="/assets/img/bassetfull.jpg" %}
+
 <h3><b>Convolution layers:</b></h3> 
 <p>
 The first convolution layer operates directly on the one-hot coding of the input sequence of length 600 bp. It optimizes the weights of set of position weight matrices (PWMs). These PWM filters search for the relevant patterns along the sequence and outputs a matrix with a row for every filter and a column for every position in the sequence. And the subsequent convolution layers consider the orientations and spatial distances between patterns recognized in the previous layer.
