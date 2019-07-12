@@ -65,9 +65,11 @@ def one_hot_encoder(my_array):
     return onehot_encoded
     
   ```  
-<p>
+
 <h4><b> II. Defining Model Architecture:</b></h4>
+<p>
 Here we define the model as Basset with three convolution layers and two layers of fully connected hidden nodes. We even performed Batch normalization for scaling the activations after each convolution layer and before the activation layer.</p>
+
  ```python 
 def get_model(load_weights = True):
     Basset= nn.Sequential( # Sequential,
@@ -95,6 +97,6 @@ def get_model(load_weights = True):
         nn.Sequential(Lambda(lambda x: x.view(1,-1) if 1==len(x.size()) else x ),nn.Linear(1000,164)), # Linear,
         nn.Sigmoid(),)
     ```
-    <p>
+    
    <h4><b> III.Training: </b></h4>
-     This model is trained on the DNA-seq data sets of 164 cell types which is found in the Road Map and ENCODE Consortium.</p>
+    <p> This model is trained on the DNA-seq data sets of 164 cell types which is found in the Road Map and ENCODE Consortium.</p>
