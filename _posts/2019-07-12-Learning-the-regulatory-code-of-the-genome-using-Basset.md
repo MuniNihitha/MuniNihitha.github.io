@@ -6,7 +6,7 @@ comments: True
 mathjax: True
 ---
 <p>
-<h2><b>Introduction</b></h2>
+<h2><b>Introduction:</b></h2>
 </p>
 <p>
 Though we know that , most of the diseases are constituted by the non-coding variants, the mechanisms behind these variants are not known. Here, we address this challenge using an approach based on a recent machine learning advance - deep convolutional neural networks (CNNs). We developed a model, Basset to apply CNNs to learn the functional activity of DNA sequences from genomics data.
@@ -23,7 +23,7 @@ Thus, Basset offers a powerful computational approach to annotate and interpret 
 To learn the DNA sequence signals of open versus closed chromatin in these cells, we apply a deep CNN. CNN's perform adaptive feature extraction to map input data to informative representations during training.
 ............img
 <p>
-<h3><b>Convolution layers</b></h3>: The first convolution layer operates directly on the one-hot coding of the input sequence of length 600 bp. It optimizes the weights of set of position weight matrices (PWMs). These PWM filters search for the relevant patterns along the sequence and outputs a matrix with a row for every filter and a column for every position in the sequence. And the subsequent convolution layers consider the orientations and spatial distances between patterns recognized in the previous layer.
+<h3><b>Convolution layers:</b></h3> The first convolution layer operates directly on the one-hot coding of the input sequence of length 600 bp. It optimizes the weights of set of position weight matrices (PWMs). These PWM filters search for the relevant patterns along the sequence and outputs a matrix with a row for every filter and a column for every position in the sequence. And the subsequent convolution layers consider the orientations and spatial distances between patterns recognized in the previous layer.
 </p><p>
 We apply a ReLU activation function after each convolution layer to obtain a more expressive model. Because, computing non-linear functions of the information flowing through the network gives more expressive models.
 </p><p>
