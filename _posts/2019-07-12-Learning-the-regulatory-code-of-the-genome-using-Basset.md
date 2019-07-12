@@ -101,4 +101,4 @@ def get_model(load_weights = True):
  ```
     
  <h4><b> III.Training: </b></h4>
-    <p> This model is trained on the DNA-seq data sets of 164 cell types which is found in the Road Map and ENCODE Consortium.</p>
+  This model is trained on the DNA-seq data sets of 164 cell types which is found in the Road Map and ENCODE Consortium.
