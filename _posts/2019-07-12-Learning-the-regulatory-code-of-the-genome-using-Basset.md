@@ -117,6 +117,7 @@ model = get_model(load_weights = True)
 model=model.cpu()
 #print(model)
 out=model(torch_ex_float_tensor)
-print(out)'''
+print(out)```
+
 
 Here, we need to first, one-hot encode the test sequence and  then reshape the numpy array such that it is compatible with the shape of the input for the model and feed it to the model for the model to make predictions of the DNA accessibility.
