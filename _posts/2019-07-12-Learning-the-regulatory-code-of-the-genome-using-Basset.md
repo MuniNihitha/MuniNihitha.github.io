@@ -38,7 +38,7 @@ The full architecture of our neural network includes three convolution layers an
 </p><p>
 <h3><b>Implementation:</b></h3>
 <h4><b>I. Data Preprocessing:</b></h4></p>
- ```python
+ '''python
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
@@ -58,4 +58,4 @@ def one_hot_encoder(my_array):
     integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
     onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
     onehot_encoded = np.delete(onehot_encoded, -1, 1)
-    return onehot_encoded ```
+    return onehot_encoded '''
