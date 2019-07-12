@@ -102,3 +102,6 @@ def get_model(load_weights = True):
     
  <h4><b> III.Training: </b></h4>
   This model is trained on the DNA-seq data sets of 164 cell types which is found in the Road Map and ENCODE Consortium.
+
+<h4><b>IV. Testing:</b></h4>
+For testing, we provide the model with a sample sequence of length 600bp and the model makes the predictions for the DNA accessibility of 164 cell-types.
