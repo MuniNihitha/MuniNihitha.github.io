@@ -104,4 +104,19 @@ def get_model(load_weights = True):
   This model is trained on the DNA-seq data sets of 164 cell types which is found in the Road Map and ENCODE Consortium.
 
 <h4><b>IV. Testing:</b></h4>
-For testing, we provide the model with a sample sequence of length 600bp and the model makes the predictions for the DNA accessibility of 164 cell-types.
+ For testing, we provide the model with a sample sequence of length 600bp and the model makes the predictions for the DNA accessibility of 164 cell-types.
+ 
+ ```python
+ test_sequence='TTTGTGGGAGACTATTCCTCCCATCTGCAACAGCTGCCCCTGCTGACTGCCCTTCTCTCCTCCCTCTCGCCTCAGGTCCAGTCTCTAAAAATATCTCAGGAGGCTGCAGTGGCTGACCATTGCCTTGGACCGCTCTTGGCAGTCGAAGAAGATTCTCCTGTCAGTTTGAGCTGGGTGAGCTTAGAGAGGAAAGCTCCACTATGGCTCCCAAACCAGGAAGGAGCCATAGCCCAGGCAGGAGGGCTGAGGACCTCTGGTGGCGGCCCAGGGCTTCCAGCATGTGCCCTAGGGGAAGCAGGGGCCAGCTGGCAAGAGCAGGGGGTGGGCAGAAAGCACCCGGTGGACTCAGGGCTGGAGGGGAGGAGGCGATCCCAGAGAAACAGGTCAGCTGGGAGCTTCTGCCCCCACTGCCTAGGGACCAACAGGGGCAGGAGGCAGTCACTGACCCCGAGACGTTTGCATCCTGCACAGCTAGAGATCCTTTATTAAAAGCACACTGTTGGTTTCTGCTCAGTTCTTTATTGATTGGTGTGCCGTTTTCTCTGGAAGCCTCTTAAGAACACAGTGGCGCAGGCTGGGTGGAGCCGTCCCCCCATGGAG'
+numpy_ex_array=one_hot_encoder(string_to_array(test_sequence))
+shape = numpy_ex_array.shape
+temp = np.reshape(numpy_ex_array,(1,shape[1],shape[0],1))
+torch_ex_float_tensor = torch.from_numpy(temp)
+torch_ex_float_tensor=torch_ex_float_tensor.float()
+model = get_model(load_weights = True)
+model=model.cpu()
+#print(model)
+out=model(torch_ex_float_tensor)
+print(out)'''
+
+Here, we need to first, one-hot encode the test sequence and  then reshape the numpy array such that it is compatible with the shape of the input for the model and feed it to the model for the model to make predictions of the DNA accessibility.
