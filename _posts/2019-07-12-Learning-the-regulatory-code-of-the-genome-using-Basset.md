@@ -38,7 +38,11 @@ The full architecture of our neural network includes three convolution layers an
 </p><p>
 <h3><b>Implementation:</b></h3>
 <h4><b>I. Data Preprocessing:</b></h4></p>
- '''python
+<p>
+ i) First, the DNA sequences are given in the fasta file.
+ii) So, we first have to perform the one-hot encoding of these DNA sequences.
+ </p>
+ ```python
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
@@ -58,4 +62,36 @@ def one_hot_encoder(my_array):
     integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
     onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
     onehot_encoded = np.delete(onehot_encoded, -1, 1)
-    return onehot_encoded '''
+    return onehot_encoded
+    
+  ```  
+<p>
+<h4><b> II. Defining Model Architecture:</b></h4>
+Here we define the model as Basset with three convolution layers and two layers of fully connected hidden nodes. We even performed Batch normalization for scaling the activations after each convolution layer and before the activation layer.</p>
+ python ```
+def get_model(load_weights = True):
+    Basset= nn.Sequential( # Sequential,
+        nn.Conv2d(4,300,(19, 1)),
+        nn.BatchNorm2d(300),
+        nn.ReLU(),
+        nn.MaxPool2d((3, 1),(3, 1)),
+        nn.Conv2d(300,200,(11, 1)),
+        nn.BatchNorm2d(200),
+        nn.ReLU(),
+        nn.MaxPool2d((4, 1),(4, 1)),
+        nn.Conv2d(200,200,(7, 1)),
+        nn.BatchNorm2d(200),
+        nn.ReLU(),
+        nn.MaxPool2d((4, 1),(4, 1)),
+        Lambda(lambda x: x.view(x.size(0),-1)), # Reshape,
+        nn.Sequential(Lambda(lambda x: x.view(1,-1) if 1==len(x.size()) else x ),nn.Linear(2000,1000)), # Linear,
+        nn.BatchNorm1d(1000,1e-05,0.1,True),#BatchNorm1d,
+        nn.ReLU(),
+        nn.Dropout(0.3),
+        nn.Sequential(Lambda(lambda x: x.view(1,-1) if 1==len(x.size()) else x ),nn.Linear(1000,1000)), # Linear,
+        nn.BatchNorm1d(1000,1e-05,0.1,True),#BatchNorm1d,
+        nn.ReLU(),
+        nn.Dropout(0.3),
+        nn.Sequential(Lambda(lambda x: x.view(1,-1) if 1==len(x.size()) else x ),nn.Linear(1000,164)), # Linear,
+        nn.Sigmoid(),```
+    )
