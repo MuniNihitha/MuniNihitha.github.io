@@ -37,7 +37,7 @@ Then we perform the Max Pooling, which reduces the dimension of the input and so
 The full architecture of our neural network includes three convolution layers and two layers of fully connected hidden nodes.
 </p><p>
 <h3><b>Implementation:</b></h3>
-<h4><b>I. Data Preprocessing:</b></h4>
+<h4><b>I. Data Preprocessing:</b></h4></p>
  ```python
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
