@@ -6,7 +6,7 @@ comments: True
 mathjax: True
 ---
 <p>
-<h2><b>Introduction</b></h>
+<h2><b>Introduction</b></h2>
 </p>
 <p>
 Though we know that , most of the diseases are constituted by the non-coding variants, the mechanisms behind these variants are not known. Here, we address this challenge using an approach based on a recent machine learning advance - deep convolutional neural networks (CNNs). We developed a model, Basset to apply CNNs to learn the functional activity of DNA sequences from genomics data.
@@ -18,7 +18,7 @@ ii. annotate the principles learned by the model.
 Thus, Basset offers a powerful computational approach to annotate and interpret the non-coding genome.
 </p>
 <p>
-<h2><b> Overview: </b></h>
+<h2><b> Overview: </b></h2>
 </p>
 To learn the DNA sequence signals of open versus closed chromatin in these cells, we apply a deep CNN. CNN's perform adaptive feature extraction to map input data to informative representations during training.
 ............img
