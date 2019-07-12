@@ -39,8 +39,8 @@ The full architecture of our neural network includes three convolution layers an
 <h3><b>Implementation:</b></h3>
 <h4><b>I. Data Preprocessing:</b></h4></p>
 <p>
- i) First, the DNA sequences are given in the fasta file.
-ii) So, we first have to perform the one-hot encoding of these DNA sequences.
+ i) First, the DNA sequences are given in the fasta file.</p><p>
+ii) So, we first have to perform the one-hot encoding of these DNA sequences.</p>
  </p>
  ```python
 from sklearn.preprocessing import OneHotEncoder
@@ -68,7 +68,7 @@ def one_hot_encoder(my_array):
 <p>
 <h4><b> II. Defining Model Architecture:</b></h4>
 Here we define the model as Basset with three convolution layers and two layers of fully connected hidden nodes. We even performed Batch normalization for scaling the activations after each convolution layer and before the activation layer.</p>
- python ```
+ ```python 
 def get_model(load_weights = True):
     Basset= nn.Sequential( # Sequential,
         nn.Conv2d(4,300,(19, 1)),
@@ -93,5 +93,8 @@ def get_model(load_weights = True):
         nn.ReLU(),
         nn.Dropout(0.3),
         nn.Sequential(Lambda(lambda x: x.view(1,-1) if 1==len(x.size()) else x ),nn.Linear(1000,164)), # Linear,
-        nn.Sigmoid(),```
-    )
+        nn.Sigmoid(),)
+    ```
+    <p>
+   <h4><b> III.Training: </b></h4>
+     This model is trained on the DNA-seq data sets of 164 cell types which is found in the Road Map and ENCODE Consortium.</p>
